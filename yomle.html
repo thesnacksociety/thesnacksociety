@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Snack Society</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background-color: #121212;
+      color: #fff;
+    }
+    header {
+      background: orange;
+      padding: 1rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    .slogan {
+      text-align: center;
+      margin-top: -1rem;
+      font-style: italic;
+      color: #ffdbac;
+    }
+    .container {
+      padding: 1rem;
+    }
+    .category {
+      margin-top: 2rem;
+    }
+    .category h2 {
+      color: orange;
+    }
+    .snacks {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+    .snack {
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .snack:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px orange;
+    }
+    .snack img {
+      max-width: 100%;
+      border-radius: 10px;
+      height: 100px;
+      object-fit: cover;
+    }
+    .snack p {
+      margin: 0.5rem 0;
+    }
+    button {
+      background: orange;
+      color: black;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #ffaa00;
+    }
+    #cart-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: orange;
+      color: black;
+      border: none;
+      padding: 1rem;
+      border-radius: 50%;
+      font-size: 1.5rem;
+    }
+    #cart-count {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.9rem;
+    }
+    #cart-form {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e1e1e;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px orange;
+      z-index: 999;
+      width: 90%;
+      max-width: 350px;
+    }
+    #cart-form input, #cart-form textarea {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      padding: 0.5rem;
+      border: none;
+      border-radius: 5px;
+    }
+    #close-cart {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 0.2rem 0.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    Snack Society
+    <div class="slogan">where snacks meet happiness</div>
+  </header>
+
+  <div class="container">
+    <div class="category">
+      <h2>Chips</h2>
+      <div class="snacks">
+        <div class="snack"><img src="/images/doritos.jpg"><p>Doritos - 15 cedis</p><button onclick="addToCart('Doritos - 15 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/cheetos.jpg"><p>Cheetos - 15 cedis</p><button onclick="addToCart('Cheetos - 15 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/funnyuns.jpg"><p>Funyuns - 15 cedis</p><button onclick="addToCart('Funyuns - 15 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/lay's.jpg"><p>Lay's Chips - 15 cedis</p><button onclick="addToCart('Lay\'s - 15 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/ruffles.jpg"><p>Ruffles - 15 cedis</p><button onclick="addToCart('Ruffles - 15 cedis')">Add to Cart</button></div>
+      </div>
+    </div>
+    <div class="category">
+      <h2>Candy & Chocolate</h2>
+      <div class="snacks">
+        <div class="snack"><img src="/images/kit kat mini.jpg"><p>Kit Kat- 50 cedis</p><button onclick="addToCart('Kit Kat - 40 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/kit kat.jpg"><p>Kit Kat (mini)- 40 cedis</p><button onclick="addToCart('Kit Kat - 40 cedis')">Add to Cart</button></div> 
+        <div class="snack"><img src="/images/sweetarts.jpg"><p>Sweetarts - 50 cedis</p><button onclick="addToCart('Sweetarts - 50 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/gumball.jpg"><p>Gumball - 40 cedis</p><button onclick="addToCart('Gumball - 40 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/sour punch.jpg"><p>Sour Punch - 50 cedis</p><button onclick="addToCart('Sour Punch - 50 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/not so sour punch.jpg"><p>Not So Sour Punch - 50 cedis</p><button onclick="addToCart('Not So Sour Punch - 50 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/wether's.jpg"><p>Werther's Original - 50 cedis</p><button onclick="addToCart('Werther\'s Original - 50 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/milkyway.jpg"><p>Milky Way - 50 cedis</p><button onclick="addToCart('Milky Way - 50 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/m&m's.jpg"><p>M&M's - 30 cedis</p><button onclick="addToCart('M&M\'s - 30 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/popsecret.jpg"><p>Pop Secret - 50 cedis</p><button onclick="addToCart('Pop Secret - 50 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/hershey.jpg"><p>Hershey's Mr. Goodbar - 40 cedis</p><button onclick="addToCart('Hershey\'s Mr. Goodbar - 40 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/snickers.jpg"><p>Snickers - 50 cedis</p><button onclick="addToCart('Snickers - 50 cedis')">Add to Cart</button></div>
+      </div>
+    </div>
+    <div class="category">
+      <h2>Drinks</h2>
+      <div class="snacks">
+        <div class="snack"><img src="/images/sun kist.jpg"><p>Sunkist Orange (small) - 7 cedis</p><button onclick="addToCart('Sunkist Orange small - 7 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/sun kist.jpg"><p>Sunkist Orange (big) - 15 cedis</p><button onclick="addToCart('Sunkist Orange big - 15 cedis')">Add to Cart</button></div>
+        <div class="snack"><img src="/images/canada dry.jpg"><p>Canada Dry - 15 cedis</p><button onclick="addToCart('Canada Dry - 15 cedis')">Add to Cart</button></div>
+      </div>
+    </div>
+  </div>
+
+  <button id="cart-button" onclick="showCartForm()">
+    🛒 <span id="cart-count">0</span>
+  </button>
+    
+
+  
+  <div id="cart-form">
+  <button id="close-cart" onclick="document.getElementById('cart-form').style.display='none'">x</button>
+  <h3>Your Cart:</h3>
+  <ul id="cart-list"></ul>
+  <form onsubmit="event.preventDefault(); sendOrder();">
+    <input type="text" id="customer-name" placeholder="Your Name" required>
+    <input type="text" id="customer-address" placeholder="Your Address" required>
+    <input type="text" id="customer-phone" placeholder="Phone Number" required pattern="[0-9]+" title="Enter a valid phone number">
+    <button type="submit">Send Order via WhatsApp</button>
+  </form>
+</div>
+
+
+  <script>
+  const cartItems = [];
+
+  function addToCart(item) {
+    cartItems.push(item);
+    updateCartCount();
+    renderCartItems();
+    alert(item + " added to cart!");
+  }
+
+  function updateCartCount() {
+    document.getElementById("cart-count").innerText = cartItems.length;
+  }
+
+  function renderCartItems() {
+    const cartItemsList = document.getElementById("cart-list");
+    cartItemsList.innerHTML = "";
+
+    cartItems.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+
+      const removeBtn = document.createElement("button");
+      removeBtn.textContent = "❌";
+      removeBtn.style.marginLeft = "10px";
+      removeBtn.style.background = "red";
+      removeBtn.style.color = "white";
+      removeBtn.style.border = "none";
+      removeBtn.style.borderRadius = "5px";
+      removeBtn.style.padding = "2px 6px";
+      removeBtn.style.cursor = "pointer";
+
+      removeBtn.onclick = () => {
+        cartItems.splice(index, 1);
+        updateCartCount();
+        renderCartItems();
+      };
+
+      li.appendChild(removeBtn);
+      cartItemsList.appendChild(li);
+    });
+  }
+
+  function showCartForm() {
+    renderCartItems(); // ✅ Ensures updated items appear
+    document.getElementById("cart-form").style.display = "block";
+  }
+
+  function sendOrder() {
+    const name = document.getElementById("customer-name").value;
+    const address = document.getElementById("customer-address").value;
+    const phone = document.getElementById("customer-phone").value;
+    const items = cartItems.join("\n");
+    const message = `Hi SNACK SOCIETY, I want to order:\n${items}\n\nName: ${name}\nAddress: ${address}\nPhone: ${phone}`;
+    const phoneNumber = "0537255576";
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/233${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappURL, "_blank");
+  }
+</script>
+
+</body>
+</html>
